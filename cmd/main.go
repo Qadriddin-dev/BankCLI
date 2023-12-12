@@ -14,7 +14,8 @@ func main() {
 		fmt.Println("3. Снять деньги со счета клиента")
 		fmt.Println("4. Показать всех клиентов")
 		fmt.Println("5. Показать баланс клиента")
-		fmt.Println("6. Выйти")
+		fmt.Println("6. Сделать перевод")
+		fmt.Println("7. Выйти")
 
 		fmt.Scan(&choice)
 
@@ -29,6 +30,8 @@ func main() {
 		} else if choice == 5 {
 			pkg.ShowClientBalance()
 		} else if choice == 6 {
+			pkg.Transaction()
+		} else if choice == 7 {
 			fmt.Println("Спасибо что воспользовались нашим сервисом :)")
 			break
 		}
