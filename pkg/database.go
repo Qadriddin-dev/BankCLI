@@ -2,8 +2,6 @@ package pkg
 
 import "bankCLI/pkg/models"
 
-var Database = make(map[string]float64)
-
 var Percent = 10
 
 var Cities = make([]models.City, 0)
