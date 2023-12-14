@@ -1,26 +1,51 @@
 package pkg
 
-import "fmt"
-
-var clients = make(map[string]map[string]int)
+import (
+	"bankCLI/pkg/models"
+	"fmt"
+)
 
 func RegisterClient() {
-	var name string
-	var age int
+	var name, cityName string
+	var year, phoneNumber int
+	var client models.Clients
 
-	fmt.Println("Введите имя клиента:")
+	fmt.Println("Введите имя клиента")
 	fmt.Scan(&name)
+	client.Name = name
 
-	fmt.Println("Введите возраст клиента:")
-	fmt.Scan(&age)
+	fmt.Println("Введите год рождения клиента")
+	fmt.Scan(&year)
+	client.BirthYear = year
 
-	client := make(map[string]int)
-	client["age"] = age
-	client["balance"] = 0
+	fmt.Println("Введите номер телефона клиента")
+	fmt.Scan(&phoneNumber)
+	client.PhoneNumber = phoneNumber
 
-	clients[name] = client
+	client.Balance = 0
 
-	fmt.Println("________________")
-	fmt.Println("Клиент добавлен:", name)
-	fmt.Println("________________")
+	for {
+		fmt.Println("Выберите город из списка:")
+		for _, city := range Cities {
+			fmt.Println(city.Name)
+		}
+
+		fmt.Scan(&cityName)
+
+		cityFound := false
+		for _, city := range Cities {
+			if city.Name == cityName {
+				client.City = city
+				cityFound = true
+				break
+			}
+		}
+
+		if cityFound {
+			break
+		} else {
+			fmt.Println("Пожалуйста выберите город из списка")
+		}
+	}
+	Clients = append(Clients, client)
 }
